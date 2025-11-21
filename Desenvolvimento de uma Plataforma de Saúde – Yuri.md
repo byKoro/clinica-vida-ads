@@ -18,6 +18,8 @@ github_repo: koro|https://github.com/byKoro/clinicaVida-projetoIntegrado-faculda
 - [x] Definir objetivos e duração das sprints
 - [x] Desenvolver programa em Python – Cadastro de pacientes
 - [x] Desenvolver programa em Python – Estatísticas
+- [x] Formatar o documento final no Word
+- [x] Revisar todo o trabalho antes da entrega
 - [x] Desenvolver programa em Python – Busca de pacientes
 - [x] Desenvolver programa em Python – Listagem de todos os pacientes
 - [x] Implementar menu em loop
@@ -41,13 +43,11 @@ github_repo: koro|https://github.com/byKoro/clinicaVida-projetoIntegrado-faculda
 - [x] Sprint 1 – Organização do Projeto
 - [x] Sprint 2 – Desenvolvimento em Python
 - [x] Sprint 3 - Lógicas e Tabelas Verdade
-- [ ] Sprint 4 – Modelagem + Entrega
+- [x] Sprint 4 – Modelagem + Entrega
 
 
 ## Em Progresso
 
-- [ ] Revisar todo o trabalho antes da entrega
-- [ ] Formatar o documento final no Word
 
 
 ## #concluido Sprint 1 – Organização do Projeto
@@ -87,16 +87,16 @@ github_repo: koro|https://github.com/byKoro/clinicaVida-projetoIntegrado-faculda
 - [x] @{2025-11-01} - @{2025-11-23}
 - [x] Pseudocódigo
 - [x] Diagrama de caso de uso
-- [ ] Revisão
-- [ ] Formatação
-- [ ] Relatórios
-- [ ] Preparação do Word final
+- [x] Revisão
+- [x] Formatação
+- [x] Relatórios
+- [x] Preparação do Word final
 
 
 
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[true,true,false,false,true,true,true,false]}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false,false,false]}
 ```
 %%
