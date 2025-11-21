@@ -60,12 +60,31 @@ def cadastrarPacientes():
     print("Paciente Cadastrado com sucesso: ")
 
 def listarPacientes():
-  if not pacientesLista:
-    print("Nãom há pacientes para ver aqui")
-    return
-  print("\n=== Lista de Todos os Pacientes ===")
-  for paciente in pacientesLista:
-    print(f"ID: {paciente['id']} | Nome: {paciente['nome']} | Idade: {paciente['idade']} | Telefone: {paciente['telefone']}")
+    if not pacientesLista: 
+        print("\nNenhum paciente cadastrado.")
+        return 
+
+    print("\n" + "="*60)
+    print(" " * 20 + "RELATÓRIO DE PACIENTES")
+    print("="*60)
+    
+    # Cabeçalho da Tabela
+    cabecalho = f"|{'ID':^5}|{'NOME':<25}|{'IDADE':>8}|{'TELEFONE':<18}|"
+    print(cabecalho)
+    print("-"*60)
+    
+    # Loop para imprimir os dados de cada paciente
+    for paciente in pacientesLista:
+        linha = (
+            f"|{paciente['id']:^5}|"        
+            f"{paciente['nome']:<25}|"      
+            f"{paciente['idade']:>8}|"      
+            f"{paciente['telefone']:<18}|"   
+        )
+        print(linha)
+    
+    print("="*60)
+    print(f"Total de Pacientes: {len(pacientesLista)}")
 
 
 if __name__ == "__main__":
