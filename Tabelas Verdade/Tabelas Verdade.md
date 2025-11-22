@@ -26,17 +26,26 @@ D = Pagamentos em dia
 
 # $$C \land (B \lor D)$$
 "O paciente será atendido SE: (Há médico disponível) **E** (Tem documentos **OU** pagamentos em dia)"
+A = Agendamento (Não afeta emergência, mas consta nas variáveis do sistema)
 B = Documentos
 C = Médico
 D = Pagamento em dia
 
-|C|B|D|C ∧ ( B ∨ D )|
-|---|---|---|---|
-|1|1|1|1|
-|1|1|0|1|
-|1|0|1|1|
-|0|1|1|0|
-|0|0|1|0|
-|0|1|0|0|
-|1|0|0|0|
-|0|0|0|0|
+| **A (Agendamento)** | **B (Documentos)** | **C (Médico)** | **D (Pagamentos)** | **Resultado C∧(B∨D)** |
+| ------------------- | ------------------ | -------------- | ------------------ | --------------------- |
+| 1                   | 1                  | 1              | 1                  | **1**                 |
+| 1                   | 1                  | 1              | 0                  | **1**                 |
+| 1                   | 1                  | 0              | 1                  | 0                     |
+| 1                   | 1                  | 0              | 0                  | 0                     |
+| 1                   | 0                  | 1              | 1                  | **1**                 |
+| 1                   | 0                  | 1              | 0                  | 0                     |
+| 1                   | 0                  | 0              | 1                  | 0                     |
+| 1                   | 0                  | 0              | 0                  | 0                     |
+| 0                   | 1                  | 1              | 1                  | **1**                 |
+| 0                   | 1                  | 1              | 0                  | **1**                 |
+| 0                   | 1                  | 0              | 1                  | 0                     |
+| 0                   | 1                  | 0              | 0                  | 0                     |
+| 0                   | 0                  | 1              | 1                  | **1**                 |
+| 0                   | 0                  | 1              | 0                  | 0                     |
+| 0                   | 0                  | 0              | 1                  | 0                     |
+| 0                   | 0                  | 0              | 0                  | 0                     |
