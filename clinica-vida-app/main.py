@@ -1,5 +1,34 @@
 pacientesLista = [
-
+    {
+        "id": 0,
+        "nome": "Maria Silva",
+        "idade": 45,
+        "telefone": "(11) 98765-4321"
+    },
+    {
+        "id": 1,
+        "nome": "João Victor",
+        "idade": 19,
+        "telefone": "(21) 99988-7766"
+    },
+    {
+        "id": 2,
+        "nome": "Helena Costa",
+        "idade": 72,
+        "telefone": "(31) 95555-4444"
+    },
+    {
+        "id": 3,
+        "nome": "Pedro Alves",
+        "idade": 30,
+        "telefone": "(41) 91111-2222"
+    },
+    {
+        "id": 4,
+        "nome": "Ana Lúcia",
+        "idade": 19,
+        "telefone": "(51) 93333-6666"
+    }
 ]
 
 VERMELHO = '\033[91m'
@@ -18,8 +47,10 @@ def main():
 
     try:
       escolha = int(input("Selecione uma opção: "))
-    except ValueError or escolha < 0 and escolha > 4:
-      print(f"{VERMELHO}Valor inválido")
+      if escolha < 0 or escolha > 4:
+        print(f"{VERMELHO}Valor inválido{RESET}")
+    except ValueError:
+      print(f"{VERMELHO}Valor inválido{RESET}")
 
     if escolha == 1:
       cadastrarPacientes()
@@ -46,7 +77,7 @@ def main():
       pass
 
     elif escolha == 0:
-      print("Programa finalizado")
+      print(f"{VERDE}Programa finalizado{RESET}")
       break
 
 def cadastrarPacientes():
@@ -84,10 +115,14 @@ def verEstatisticas():
     print("2. Idade média dos pacientes")
     print("3. Paciente mais velho e mais novo")
     print("0. Voltar")
+
     try:
       escolha = int(input("Selecione uma opção: "))
-    except ValueError or escolha < 0 and escolha > 3:
-      print(f"{VERMELHO}Valor inválido")
+      if escolha < 0 or escolha > 3:
+        print(f"{VERMELHO}Valor inválido{RESET}")
+    except ValueError:
+      print(f"{VERMELHO}Valor inválido{RESET}")
+
     if escolha == 1: 
       totalPacientes = len(pacientesLista)
       print(f"{VERDE}O total de pacientes é de : {totalPacientes}{RESET}")
@@ -112,7 +147,7 @@ def verEstatisticas():
         else:
           pass
       
-      print(f"{VERDE}O paciente mais novo é: {pacientesLista[id_paciente_mais_novo]["nome"]} com {pacientesLista[id_paciente_mais_novo]["idade"]} anos de idade.{RESET}")
+      print(f"{VERDE}O paciente mais novo é: {pacientesLista[id_paciente_mais_novo]['nome']} com {pacientesLista[id_paciente_mais_novo]['idade']} anos de idade.{RESET}")
       # Busca do paciente mais velho
 
       print("="*60)
@@ -125,7 +160,7 @@ def verEstatisticas():
           id_paciente_mais_velho = paciente["id"]
         else:
           pass
-      print(f"{VERDE}O paciente mais velho é: {pacientesLista[id_paciente_mais_velho]["nome"]} com {pacientesLista[id_paciente_mais_velho]["idade"]} anos de idade.{RESET}")
+      print(f"{VERDE}O paciente mais velho é: {pacientesLista[id_paciente_mais_velho]['nome']} com {pacientesLista[id_paciente_mais_velho]['idade']} anos de idade.{RESET}")
     if escolha == 0:
       break 
 
