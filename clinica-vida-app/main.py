@@ -55,6 +55,7 @@ def main():
       escolha = int(input("Selecione uma opção: "))
       if escolha < 0 or escolha > 4:
         print(f"{VERMELHO}Valor inválido{RESET}")
+
     except ValueError:
       print(f"{VERMELHO}Valor inválido{RESET}")
 
@@ -95,10 +96,12 @@ def cadastrarPacientes():
     print("======== Cadastro do Paciente =======")
     id_paciente = len(pacientesLista)
     nome_input = str(input("Digíte o nome completo do paciente: "))
+    
     while True:
       try:
         idade_input = int(input("Digíte a idade do paciente: "))
         break
+
       except ValueError:
         print(f"{VERMELHO}A idade deve ser um número: {RESET}")
         
@@ -129,6 +132,7 @@ def verEstatisticas():
       escolha = int(input("Selecione uma opção: "))
       if escolha < 0 or escolha > 3:
         print(f"{VERMELHO}Valor inválido{RESET}")
+
     except ValueError:
       print(f"{VERMELHO}Valor inválido{RESET}")
 
@@ -177,7 +181,7 @@ def buscarPacientes():
   # Cabeçalho
   termo_busca = str(input("Digíte o nome do paciente: ").lower())
   encontrado = False
-  
+
   print("\n" + "="*60)
   cabecalho = f"|{'ID':^5}|{'NOME':<25}|{'IDADE':>8}|{'TELEFONE':<18}|"
   print(cabecalho)
