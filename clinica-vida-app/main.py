@@ -1,4 +1,10 @@
-pacientesLista = []
+pacientesLista = [
+
+]
+
+VERMELHO = '\033[91m'
+VERDE = '\033[92m'
+RESET = '\033[0m'
 
 def main():
 
@@ -10,22 +16,33 @@ def main():
     print("4. Listar todos os pacientes.")
     print("0. Sair")
 
-    escolha = int(input("Selecione uma opção: "))
+    try:
+      escolha = int(input("Selecione uma opção: "))
+    except ValueError or escolha < 0 and escolha > 4:
+      print(f"{VERMELHO}Valor inválido")
 
     if escolha == 1:
       cadastrarPacientes()
       pass
 
     elif escolha == 2:
-      verEstatisticas()
-      pass
+      # Verificar lista vazia
+      if len(pacientesLista) == 0:
+        print(f"{VERMELHO}Cadastre algum paciente antes de acessar esse menu.{RESET}")
 
+      else:
+        verEstatisticas()
+        pass
+    
     elif escolha == 3:
       buscarPacientes()
       pass
 
     elif escolha == 4:
-      listarPacientes()
+      if len(pacientesLista) == 0:
+        print(f"{VERMELHO}Cadastre algum paciente antes de acessar esse menu.{RESET}")
+      else:
+        listarPacientes()
       pass
 
     elif escolha == 0:
@@ -43,7 +60,7 @@ def cadastrarPacientes():
         idade_input = int(input("Digíte a idade do paciente: "))
         break
       except ValueError:
-        print("A idade deve ser um número: ")
+        print(f"{VERMELHO}A idade deve ser um número: {RESET}")
         
     telefone_input = str(input("Digíte o telefone do paciente: "))
 
@@ -58,6 +75,59 @@ def cadastrarPacientes():
     pacientesLista.append(novo_paciente)
 
     print("Paciente Cadastrado com sucesso: ")
+
+def verEstatisticas():
+  while True:
+    print("===== Sistema da Clínica Vida + =====")
+    print("=========== Ver estáticas ===========")
+    print("1. Total de Pacientes")
+    print("2. Idade média dos pacientes")
+    print("3. Paciente mais velho e mais novo")
+    print("0. Voltar")
+    try:
+      escolha = int(input("Selecione uma opção: "))
+    except ValueError or escolha < 0 and escolha > 3:
+      print(f"{VERMELHO}Valor inválido")
+    if escolha == 1: 
+      totalPacientes = len(pacientesLista)
+      print(f"{VERDE}O total de pacientes é de : {totalPacientes}{RESET}")
+
+    if escolha == 2:
+      soma_idade = 0
+      for paciente in pacientesLista:
+        soma_idade = soma_idade + paciente["idade"]
+
+      media_idade = soma_idade / len(pacientesLista)
+      print(f"{VERDE}A idade média de todos os pacientes é de: {media_idade}{RESET}")
+
+    if escolha == 3:
+      # Busca do paciente mais novo
+      paciente_mais_novo = pacientesLista[0]["idade"]
+      id_paciente_mais_novo = 0
+
+      for paciente in pacientesLista:
+        if paciente_mais_novo > paciente["idade"]:
+          paciente_mais_novo = paciente["idade"]
+          id_paciente_mais_novo = paciente["id"]
+        else:
+          pass
+      
+      print(f"{VERDE}O paciente mais novo é: {pacientesLista[id_paciente_mais_novo]["nome"]} com {pacientesLista[id_paciente_mais_novo]["idade"]} anos de idade.{RESET}")
+      # Busca do paciente mais velho
+
+      print("="*60)
+
+      paciente_mais_velho = pacientesLista[0]["idade"]
+      id_paciente_mais_velho = 0
+      for paciente in pacientesLista:
+        if paciente_mais_velho < paciente["idade"]:
+          paciente_mais_velho = paciente["idade"]
+          id_paciente_mais_velho = paciente["id"]
+        else:
+          pass
+      print(f"{VERDE}O paciente mais velho é: {pacientesLista[id_paciente_mais_velho]["nome"]} com {pacientesLista[id_paciente_mais_velho]["idade"]} anos de idade.{RESET}")
+    if escolha == 0:
+      break 
 
 def listarPacientes():
     if not pacientesLista: 
