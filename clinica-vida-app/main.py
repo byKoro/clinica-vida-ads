@@ -28,6 +28,12 @@ pacientesLista = [
         "nome": "Ana Lúcia",
         "idade": 19,
         "telefone": "(51) 93333-6666"
+    },
+    {
+        "id": 5,
+        "nome": "Ana Luzia",
+        "idade": 22,
+        "telefone": "(51) 93333-6666"
     }
 ]
 
@@ -66,7 +72,10 @@ def main():
         pass
     
     elif escolha == 3:
-      buscarPacientes()
+      if len(pacientesLista) == 0:
+        print(f"{VERMELHO}Cadastre algum paciente antes de acessar esse menu.{RESET}")
+      else:
+       buscarPacientes()
       pass
 
     elif escolha == 4:
@@ -163,6 +172,33 @@ def verEstatisticas():
       print(f"{VERDE}O paciente mais velho é: {pacientesLista[id_paciente_mais_velho]['nome']} com {pacientesLista[id_paciente_mais_velho]['idade']} anos de idade.{RESET}")
     if escolha == 0:
       break 
+
+def buscarPacientes():
+  # Cabeçalho
+  termo_busca = str(input("Digíte o nome do paciente: ").lower())
+  encontrado = False
+  
+  print("\n" + "="*60)
+  cabecalho = f"|{'ID':^5}|{'NOME':<25}|{'IDADE':>8}|{'TELEFONE':<18}|"
+  print(cabecalho)
+  print("-"*60)
+
+
+  for paciente in pacientesLista:
+    if termo_busca in paciente['nome'].lower():
+      linha = (
+        f"|{paciente['id']:^5}|"        
+        f"{paciente['nome']:<25}|"      
+        f"{paciente['idade']:>8}|"      
+        f"{paciente['telefone']:<18}|"   
+      )
+      print(linha)
+      encontrado = True
+
+  print("="*60)
+
+  if not encontrado:
+    print(f"{VERMELHO}Nenhum paciente com o nome {termo_busca} foi encontrado!{RESET}")
 
 def listarPacientes():
     if not pacientesLista: 
